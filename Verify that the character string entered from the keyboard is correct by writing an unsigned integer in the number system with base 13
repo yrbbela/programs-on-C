@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+    system("chcp 1251");
+    char character[50];
+    int decimal = 0;
+    int base = 13;
+
+    printf("Enter a character string: ");
+    gets_s(character);
+    int i = 0;
+    while (*(character + i) == ' ') {
+        i++;
+    }
+    while (*(character + i) != '\0') {
+        //converting a character into a decimal value
+        int digit = 0;
+
+        if (*(character + i) >= '0' && *(character + i) <= '9') {
+            digit = *(character + i) - '0';
+        }
+        else if (*(character + i) >= 'A' && *(character + i) <= 'C') {
+            digit = *(character + i) - 'A' + 10;
+        }
+        else if (*(character + i) >= 'a' && *(character + i) <= 'c') {
+            digit = *(character + i) - 'a' + 10;
+        }
+        else {
+            printf("The entered string is not a valid representation of a number in the base 13 number system.\n");
+            return 0;
+        }
+        decimal = decimal * base + digit;
+        i++;
+    }
+    printf("Decimal value of the number: %d\n", decimal);
+
+    return 0;
+}
