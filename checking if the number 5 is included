@@ -1,0 +1,17 @@
+#include <stdio.h>
+#define _USE_MATH_DEFINES 
+#include <math.h>
+
+int main()
+{
+	int n = 0;
+	printf("Enter a four-digit number: ");
+	scanf_s("%d", &n);
+	if (n % 10 == 5 || (n / 10) % 10 == 5 || (n / 100) % 10 == 5 || (n / 1000) % 10 == 5) {
+		printf("There are 5 among this number\n");
+	}
+	else {
+		printf("There is no 5 among this number\n");
+	}
+	return 0;
+}
