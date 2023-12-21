@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdio.h>
+#define R 50
+
+int main() 
+{
+    int size;
+    printf("Enter the size of the matrix (for example, 4 for a 4x4 matrix): ");
+    scanf_s("%d", &size);
+
+    int matrix[R][R];
+
+    // Filling the matrix with zeros
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            matrix[i][j] = 0;
+        }
+    }
+   
+    // Setting the value 1 in the central part of the matrix
+    for (int i = 1; i < size - 1; i++) {
+        for (int j = 1; j < size - 1; j++) {
+            matrix[i][j] = 1;
+        }
+    }
+
+    printf("The resulting matrix with units in the middle:\n");
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
