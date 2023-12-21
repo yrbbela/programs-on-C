@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define R 50
+#define S 50
+
+int main() {
+    int r = 0;
+    int s = 0;
+    printf("Enter the size of the matrix with a space: ");
+    scanf_s("%d %d", &r, &s);
+    int matrix[R][S];
+
+    //so that the program generates new numbers at each launch
+    srand(time(NULL));
+
+    int i, j;
+    if (r > 1) {
+        for (i = 0; i < r - 1; i++) {
+            for (j = 0; j < s; j++) {
+                *(*(matrix + i) + j) = rand() % 2;
+            }
+        }
+
+        printf("The resulting matrix:\n");
+        for (i = 0; i < r; i++) {
+            for (j = 0; j < s; j++) {
+                printf("%d ", *(*(matrix + i) + j));
+            }
+            printf("\n");
+        }
+
+        //XOR calculation for the last row
+        for (j = 0; j < s; j++) {
+            *(*(matrix + r - 1) + j) = *(*(matrix)+j); //initialize the XOR result with the first line
+            for (i = 1; i < r - 1; i++) {
+                *(*(matrix + r - 1) + j) ^= *(*(matrix + i) + j); //perform XOR with the following lines
+            }
+        }
+
+        printf("The final matrix:\n");
+        for (i = 0; i < r; i++) {
+            for (j = 0; j < s; j++) {
+                printf("%d ", *(*(matrix + i) + j));
+            }
+            printf("\n");
+        }
+    }
+    else {
+        printf("Unable to perform operation on one row.\n");
+    }
+
+    return 0;
+}
