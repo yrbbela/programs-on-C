@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int matrix[20][20];
+	int size = 0;
+	printf("enter size - ");
+	scanf_s("%d", &size);
+	int i, j;
+	int yes = 1;
+	printf("enter matrix\n");
+	for (i = 0; i < size; i++) {
+		for (j = 0; j < size; j++) {
+			scanf_s("%d", &matrix[i][j]);
+		}
+	}
+
+	for (i = 0; i < size; i++) {
+		for (j = 0; j < size; j++) {
+			if (matrix[i][j] != matrix[j][i]) {
+				yes = 0;
+				break;
+			}
+		}
+	}
+	if (yes) {
+		printf("yes");
+	}
+	else {
+		printf("no");
+	}
+return 0;
+}
