@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+	system("chcp 1251");
+	char sentence[100]{};
+	char sentence2[100]{};
+	char sentence3[100]{};
+
+	printf("enter first sentence - ");
+	gets_s(sentence);
+
+	printf("enter second sentence - ");
+	gets_s(sentence2);
+
+	printf("enter third sentence - ");
+	gets_s(sentence3);
+
+	if ((strcmp(sentence, sentence2) == 0) || (strcmp(sentence, sentence3) == 0) || (strcmp(sentence2, sentence3) == 0)) {
+		printf("yes");
+	}
+	else {
+		printf("no");
+	}
+	
+	return 0;
+}
