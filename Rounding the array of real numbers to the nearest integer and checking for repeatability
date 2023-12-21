@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+#define MAX 45
+
+int main()
+{
+	float k = 0;
+	double arr[MAX] = { 0 };
+	int arr_new[MAX] = { 0 };
+	int uniqueCount = 0;
+    printf("Enter an array of real numbers: \n");
+    for (int i = 0; i < MAX; i++) {
+        printf("%d: ", i + 1);
+        if (scanf_s("%f", &k) == 1) {
+            if (k - (int)k == 0) {
+                break;
+            }
+            else {
+                arr[i] = k;
+
+                int isDuplicate = 0; //check for repetition
+                for (int j = 0; j < uniqueCount; j++) {
+                    if ((int)round(arr[i]) == arr_new[j]) {
+                        isDuplicate = 1;
+                        break;
+                    }
+                }
+
+                if (isDuplicate == 0) { //adding a number to a new array
+                    arr_new[uniqueCount] = (int)round(arr[i]);
+                    uniqueCount++;
+                }
+            }
+        }
+        else {
+            break;
+        }
+    }
+		printf("A new integer array without repetitions: \n");
+		for (int i = 0; i < uniqueCount; i++) {
+			printf("%d: %d\n", i + 1, arr_new[i]);
+		}
+        
+        return 0;
+}
