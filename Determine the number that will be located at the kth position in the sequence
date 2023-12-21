@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int k;
+    printf("Enter position (1 <= k <= 2889): ");
+    scanf_s("%d", &k);
+
+    if (k >= 1 && k <= 2889) {
+        int i = 1;
+        int count = 0;
+        int resultDigit = 0;
+
+        while (i <= 999 && count < k) {
+            int temp = i;
+            int digits = 0;
+
+            while (temp != 0) {
+                temp /= 10;
+                digits++;
+            }
+
+            count += digits;
+
+            if (count >= k) {
+                int diff = count - k;
+                while (diff > 0) {
+                    i /= 10;
+                    diff--;
+                }
+                resultDigit = i % 10;
+            }
+
+            i++;
+        }
+
+        printf("Number on position %d - %d\n", k, resultDigit);
+    }
+    else {
+        printf("Incorrect position value.\n");
+    }
+
+    return 0;
+}
