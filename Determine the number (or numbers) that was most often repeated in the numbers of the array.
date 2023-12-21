@@ -1,0 +1,42 @@
+#include <stdio.h>
+#define MAX 50
+
+int main() {
+    unsigned long long arr[MAX] = {};
+    int repeats[10] = { 0 }; 
+    int n;
+    printf("Enter the number of array elements: ");
+    scanf_s("%d", &n);
+
+    printf("Enter %d long integers: \n", n);
+    for (int i = 0; i < n; i++) {
+        scanf_s("%llu", arr + i);
+
+        unsigned long long* pointer = &arr[i];
+
+        //Counting the number of repetitions of each digit in the number
+        while (*pointer > 0) {
+            int num = *pointer % 10;
+            ++*(repeats + num);
+            *pointer /= 10;
+        }
+    }
+
+    //Finding the number with the highest number of repetitions
+    int maxrepeats = 0;
+    for (int i = 0; i < 10; i++) {
+        if (*(repeats + i) > maxrepeats) {
+            maxrepeats = *(repeats + i);
+        }
+    }
+
+    printf("Number(s) with the highest number of repetitions: ");
+    for (int i = 0; i < 10; i++) {
+        if (*(repeats + i) == maxrepeats) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
